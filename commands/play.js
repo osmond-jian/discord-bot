@@ -24,7 +24,9 @@ module.exports = {
 
             const player = useMainPlayer()
             const query = interaction.options.getString('query');
-            const searchResult = await player.search(query)
+            const searchResult = await player.search(query, {
+                searchEngine: QueryType.YOUTUBE_SEARCH
+            })
             if (!searchResult.hasTracks())
                 return void interaction.followUp({content: 'No results were found!'});
 
